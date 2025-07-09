@@ -1,0 +1,162 @@
+<% layout("/layouts/boilerplate")%>
+
+<style>
+  #filters{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter{
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+  }
+
+  .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .filter p{
+    font-size:0.8rem ;
+  }
+
+  .tax-info{
+      display: none;
+  }
+
+  .tax-toggle{
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.25rem;
+    padding: 1rem;
+    margin-left: 5rem;
+    display: flex;
+    align-items: center;
+  }
+
+
+.icon-overlay {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(255, 255, 255, 0.6);
+      color: rgb(207 66 66);
+      padding: 8px;
+      border-radius: 40%;
+      font-size: 18px;
+      cursor: pointer;
+    }
+</style>
+<body>
+<%success%>
+    <h3>All Listings</h3>
+
+
+    <div id="filters">
+      <div class="filter" >
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+      </div>
+       <div class="filter" onclick="filterListings('mountains')">
+        <div ><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Farms</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Domes</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Boats</p>
+      </div>
+      <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+  <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+</div>
+      </div>
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+      <%for(let listing of allListings){ %>
+        <!-- <div class="card col " style="width: 18rem; position: relative;"> -->
+
+        <a href="/listings/<%=listing._id%>" class="listing-link">
+    <div class="card col" style="width: 18rem;">
+  <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+<!-- </a> -->
+<!-- </div> -->
+  <div class="icon-overlay heart-icon" onclick="toggleHeart(this)"><i class="fa-regular fa-heart"></i></div>
+  <!-- <div class="card-img-overlay"></div> -->
+  <div class="card-body">
+    <p class="card-text">
+       <b> <%=listing.title%></b><br>
+       <p> ₹  <%= typeof listing.price === 'number' 
+        ? listing.price.toLocaleString("en-IN") 
+        : 'N/A' %>></p>
+        <i class="tax-info">&nbsp; &nbsp; + 18% GST</i>
+    </p>
+  </div>
+</div>
+<%}%>
+</a>
+</div>
+
+<script>
+  let taxSwitch=document.getElementById("switchCheckDefault");
+  taxSwitch.addEventListener("click",()=>{
+    let taxInfo=document.getElementsByClassName("tax-info");
+    for(info of taxInfo){
+      if(info.style.display!="inline"){
+        info.style.display="inline";
+      }else{
+        info.style.display="none";
+      }
+    }
+  });
+
+  function toggleHeart(el) {
+    const icon = el.querySelector('i');
+    if (icon.classList.contains('fa-solid')) {
+      icon.classList.remove('fa-solid');
+      icon.classList.add('fa-regular');
+    } else {
+      icon.classList.remove('fa-regular');
+      icon.classList.add('fa-solid');
+    }
+  }
+
+   
+</script>
+</body>
