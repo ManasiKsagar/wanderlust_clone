@@ -1,0 +1,109 @@
+body{
+font-family: "Plus Jakarta Sans",sans-serif !important;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+.navbar{
+    height:5rem;
+    background-color: white;
+}
+
+.nav-link{
+    color:#222222 !important;
+}
+
+.fa-compass{
+    font-size: 2rem;
+    color: #fe424d;
+}
+.card{
+    border:none !important;
+    margin-bottom: 2rem;
+}
+
+.reviews-card{
+    border: 1px solid black !important;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.card-text p{
+    font-weight: 400;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+.add-btn,.edit-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.show-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
+}
+/*Footer  */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info-socials{
+    width:100%;
+    font-size: 1.3rem;
+    margin-left: 5rem;
+}
+
+.f-info-links,.f-info-socials,.f-nfo-brand{
+width:100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.f-info-socials i{
+    margin-right: 1rem;
+    font-size: 1.2 rem;
+}
+
+.f-info{
+    margin-bottom: 0;
+    text-align: center;
+    display: flex;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:space-evenly;
+}
